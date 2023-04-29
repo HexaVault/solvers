@@ -32,21 +32,21 @@ while a != "end":
             else:
                 print("Cut the fifth wire")
         else:
-            g = input("Wire Colors (g=green, b=blue, etc): ")
+            g = input("Wire Colors: ")
             g = str.lower(g)
             if i == "3":
-                if g.count("r") == 0:
+                if g.count("red") == 0:
                     print("Cut the first wire")
-                elif g.count("w") != 0:
+                elif g.count("white") != 0:
                     print("Cut the second wire")
                 else:
                     print("Cut the third wire")
             else:
-                if g.count("g") == 0:
+                if g.count("green") == 0:
                     print("Cut the first wire")
-                elif g.count("b") == 0:
+                elif g.count("blue") == 0:
                     print("Cut the second wire")
-                elif g.count("w") == 0:
+                elif g.count("white") == 0:
                     print("Cut the third wire")
                 else:
                     print("Cut the fourth wire")
@@ -63,18 +63,10 @@ while a != "end":
             print("Press the button 4 times, then press the down arrow")
     elif a == "hexadecimal" or a == "hexa":
         b = input("Type in the display, exactly as shown (incl spaces): ")
-        b1 = b[0]+b[1]
-        b2 = b[3]+b[4]
-        b3 = b[6]+b[7]
-        b4 = b[9]+b[10]
-        b1 = int(b1, 16)
-        b2 = int(b2, 16)
-        b3 = int(b3, 16)
-        b4 = int(b4, 16)
-        b1 = b1-97
-        b2 = b2-97
-        b3 = b3-97
-        b4 = b4-97
+        b1 = int(b[0]+b[1], 16) - 97
+        b2 = int(b[3]+b[4], 16) - 97
+        b3 = int(b[6]+b[7], 16) - 97
+        b4 = int(b[9]+b[10], 16) - 97
         bo = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
         print(bo[b1] + bo[b2] + bo[b3] + bo[b4])
     elif a == "tiles":
