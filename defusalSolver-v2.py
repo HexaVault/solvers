@@ -202,6 +202,7 @@ def div():
         if (divStr % 5 == 0): bits += 8
         if (divStr % 7 == 0): bits += 4
         print("Press", newDivs[bits])
+        i += 1
         
 while a != "end":
     a = input("Module type: ").lower()
