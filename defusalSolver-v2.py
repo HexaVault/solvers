@@ -46,16 +46,16 @@ def tiles():
     return tileValues.index(tile1) + tileValues.index(tile2)
 
 def keypad():
-    keypadValues = []
+    keypadValues = [0, 0, 0, 0]
     i = 0
     while i < 4:
         keypadValues[i] = int(input("Value on the " + str(i+1) + "th keypad: "))
         i += 1
     keypadRules = [
-      [10, 15, 20, 30],
-      [lambda x: x-10, lambda x: x + 1, lambda x: x * 2, lambda x: x * 3],
-      [lambda x: x, lambda x: x * 2, lambda x: x * 3, lambda x: x - 5],
-      [lambda x: x * 3, lambda x: x * 2, lambda x: x + 20, lambda x: x + 50]
+      [15, 20, 30, 10],
+      [lambda x: x-10, lambda x: x * 2, lambda x: x * 3, lambda x: x - 10],
+      [lambda x: x * 2, lambda x: x * 3, lambda x: x - 5, lambda x: x],
+      [lambda x: x * 2, lambda x: x + 20, lambda x: x + 50, lambda x: x * 3]
     ]
     
     def intToOption(value):
@@ -186,6 +186,23 @@ def morse():
         i += 1
     return "Input is " + regularStr + " and button to press is blue"
 
+def div():
+    i = 0
+    while i < 3:
+        divStr = input("Number on screen: ")
+        newDivs = "FADBCEBCFEBCEAAD"
+        try:
+            divStr = int(divStr)
+        except:
+            print("Not a number")
+            return
+        bits = 0
+        if (divStr % 2 == 0): bits += 1
+        if (divStr % 3 == 0): bits += 2
+        if (divStr % 5 == 0): bits += 8
+        if (divStr % 7 == 0): bits += 4
+        print("Press", newDivs[bits])
+        
 while a != "end":
     a = input("Module type: ").lower()
     if a == "wires": print(wires())
@@ -198,6 +215,5 @@ while a != "end":
     if a == "color code" or a == "cc": print(colorCode())
     if a == "multi buttons" or a == "multi": print(multiButtons())
     if a == "timing": print(timing())
-    elif a == "morse code" or a == "morse": print(morse())
-    elif a != "end":
-        print("Not a valid module")
+    if a == "morse code" or a == "morse": print(morse())
+    if a in ["divs", "div", "divisability", "divisibility"]: div()
